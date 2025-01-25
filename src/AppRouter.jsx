@@ -26,6 +26,8 @@ const AppRouter = () => {
 
                 <Route path='/dashboard' element={<PrivateRoute publicPage={false}><DashboardLayout /></PrivateRoute>} />
                 
+                <Route path='/:url' element={<ShortenUrlPage />} />
+
                 <Route path='/error' element={<ErrorPage />} />
                 <Route path='*' element={<ErrorPage message="We can't seem to find the page you're looking for" />} />
             </Routes>
@@ -36,10 +38,10 @@ const AppRouter = () => {
 
 export default AppRouter;
 
-export const subDomainRouter = () => {
-    return (
-        <Routes>
-            <Route path='/:shfy' element={<ShortenUrlPage />} />
-        </Routes>
-    );
-}
+// export const subDomainRouter = () => {
+//     return (
+//         <Routes>
+//             <Route path='/:url' element={<ShortenUrlPage />} />
+//         </Routes>
+//     );
+// }
