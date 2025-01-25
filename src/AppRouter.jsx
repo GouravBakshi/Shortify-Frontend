@@ -39,7 +39,7 @@ export default AppRouter;
 export const subDomainRouter = () => {
     return (
         <Routes>
-            <Route path='/:url' element={<ShortenUrlPage />} />
+            <Route path='/:shfy' element={<ShortenUrlPage />} />
         </Routes>
     );
 }
