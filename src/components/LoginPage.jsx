@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import api from '../api/api';
 import toast from 'react-hot-toast';
 import { useStoreContext } from '../contextApi/ContextApi';
+import { PulseLoader } from 'react-spinners';
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -91,7 +92,7 @@ const LoginPage = () => {
                     disabled={loader}
                     type='submit'
                     className='bg-customRed font-semibold text-white  bg-custom-gradient w-full py-2 hover:text-slate-400 transition-colors duration-100 rounded-sm my-3'>
-                    {loader ? "Loading..." : "Login"}
+                    {loader ? (<span>Loading <PulseLoader size={6} color="#d3d3d3" /></span>) : "Login"}
                 </button>
 
                 <p className='text-center text-sm text-slate-700 mt-6'>

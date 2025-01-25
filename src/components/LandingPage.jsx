@@ -9,11 +9,15 @@ const LandingPage = () => {
     const { token } = useStoreContext();
     // console.log("Token from landing page ", token);
     const dashBoardNavigateHandler = () => {
-
+        if(token != null)
+        {
+            navigate("/dashboard");
+        }
+        else{
+            navigate("/login");
+        }
     };
-
-    let desc = "Shortify is a fast and easy-to-use URL shortener that turns long links into short, shareable URLs in just a few clicks. Perfect for marketers and content creators, it also offers powerful analytics to track link performance, monitor clicks, and analyze referral sources. With strong security and reliable redirects, Shortify ensures your links are safe and always accessible. Start simplifying your URLs today!"
-
+    
     return (
         <div className='min-h-[calc(100vh -64px)] lg:px-14 sm:px-8 px-4'>
             <div className='lg:flex-row flex-col lg:py-5 pt-16 lg:gap-10 gap-8 flex justify-between items-center'>
