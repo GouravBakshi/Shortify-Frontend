@@ -1,8 +1,9 @@
 import React from 'react'
 import api from '../../api/api';
 import { useStoreContext } from '../../contextApi/ContextApi';
-import { MdDeleteForever } from 'react-icons/md';
+import { MdDelete } from 'react-icons/md';
 import toast from 'react-hot-toast';
+import { IconButton, Tooltip } from '@mui/material';
 
 const DeleteShortUrl = ({ urlId, refetch }) => {
     const { token } = useStoreContext();
@@ -25,11 +26,14 @@ const DeleteShortUrl = ({ urlId, refetch }) => {
     return (
         <div
             onClick={handleDelete}
-            className="flex cursor-pointer gap-1 items-center bg-rose-700 py-2 font-semibold shadow-md shadow-slate-500 sm:px-6 px-3 rounded-md text-white"
+            className="flex cursor-pointer gap-1 items-center py-2"
         >
-            <button className="text-sm sm:text-base">
-                <MdDeleteForever className="text-[1.3rem]" />
-            </button>
+            
+            <Tooltip title="Delete" arrow>
+                <IconButton>
+                    <MdDelete className='sm:text-[2rem] text-[1.4rem]' />
+                </IconButton>
+            </Tooltip>
         </div>
     )
 }

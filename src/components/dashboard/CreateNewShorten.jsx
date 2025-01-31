@@ -92,7 +92,7 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
                 </button>
 
                 {!loading && (
-                    <Tooltip title="Close">
+                    <Tooltip title="Close" arrow>
                         <button
                             disabled={loading}
                             onClick={() => setOpen(false)}
