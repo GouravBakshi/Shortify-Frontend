@@ -30,7 +30,7 @@ api.interceptors.response.use(
       // Token expired or unauthorized - redirect to login page
 
       localStorage.removeItem('JWT_TOKEN'); 
-      window.location.replace('/');
+      window.location.replace('/login');
     }
     return Promise.reject(error);
   }
