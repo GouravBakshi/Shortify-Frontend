@@ -8,8 +8,8 @@ const api = axios.create({
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("JWT_TOKEN")
-    ? JSON.parse(localStorage.getItem("JWT_TOKEN"))
-    : null;
+      ? JSON.parse(localStorage.getItem("JWT_TOKEN"))
+      : null;
 
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`; // Attach token in Authorization header
@@ -26,11 +26,29 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response && error.response.status === 401 ) {
-      // Token expired or unauthorized - redirect to login page
+    if (error.response && error.response.status === 401) {
+      const errorMessage = error.response.data.message || error.response.data.detail || '';
 
-      localStorage.removeItem('JWT_TOKEN'); 
-      window.location.replace('/login');
+      if (errorMessage.includes("Invalid login credentials")) {
+        // console.error("Invalid username or password.");
+
+      } else if (errorMessage.includes("JWT token has expired")) {
+        // console.error("JWT token expired. Please log in again.");
+        localStorage.removeItem('JWT_TOKEN');
+        window.location.replace('/login');
+      } else if (errorMessage.includes("JWT signature is invalid")) {
+        // console.error("JWT signature is invalid.");
+        localStorage.removeItem('JWT_TOKEN');
+        window.location.replace('/login');
+      } else if (errorMessage.includes("Malformed JWT")) {
+        // console.error("JWT is malformed.");
+        localStorage.removeItem('JWT_TOKEN');
+        window.location.replace('/login');
+      } else {
+        // console.error("Unauthorized access. Please log in.");
+        localStorage.removeItem('JWT_TOKEN');
+        window.location.replace('/login');
+      }
     }
     return Promise.reject(error);
   }

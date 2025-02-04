@@ -12,6 +12,12 @@ import LoginPage from './components/LoginPage'
 import DashboardLayout from './components/dashboard/DashboardLayout'
 import PrivateRoute from './PrivateRoute';
 import ErrorPage from './components/ErrorPage';
+import ForgotPassword from './components/forgotPassword/ForgotPassword';
+import VerifyOtp from './components/forgotPassword/VerifyOtp';
+import ChangePassword from './components/forgotPassword/ChangePassword';
+import ProfilePage from './components/ProfilePage';
+import VerifyResetOtp from './components/resetPassword/VerifyResetOtp';
+import ResetPassword from './components/resetPassword/ResetPassword';
 // import { getApps } from './utils/helper'
 
 function App() {
@@ -30,6 +36,14 @@ function App() {
 
                 <Route path="/register" element={<PrivateRoute publicPage={true}><RegisterPage /></PrivateRoute>} />
                 <Route path="/login" element={<PrivateRoute publicPage={true}><LoginPage /></PrivateRoute>} />
+
+                <Route path='/forgot-password' element={<PrivateRoute publicPage={true}><ForgotPassword /></PrivateRoute>} />
+                <Route path='/forgot-password/verifyOtp' element={<PrivateRoute publicPage={true}><VerifyOtp /> </PrivateRoute>} />
+                <Route path='/forgot-password/changePassword' element={<PrivateRoute publicPage={true}><ChangePassword /> </PrivateRoute>} />
+
+                <Route path='/profile' element={<PrivateRoute publicPage={false}><ProfilePage /></PrivateRoute>} />
+                <Route path='/profile/verifyResetOtp' element={<PrivateRoute publicPage={false}><VerifyResetOtp /></PrivateRoute>} />
+                <Route path='/profile/resetPassword' element={<PrivateRoute publicPage={false}><ResetPassword /></PrivateRoute>} />
 
                 <Route path='/dashboard' element={<PrivateRoute publicPage={false}><DashboardLayout /></PrivateRoute>} />
                 

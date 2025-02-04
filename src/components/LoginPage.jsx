@@ -42,11 +42,13 @@ const LoginPage = () => {
             navigate("/dashboard");
             // console.log(response.data);
         } catch (error) {
-            if (error.status == 403) {
-                toast.error("Invalid username or password");
-            }
-            else {
-                toast.error('An unexpected error occurred');
+            if (error.response && error.response.status === 401) {
+                const errorMessage = error.response.data.detail || error.response.data.message || '';
+                if (errorMessage.includes("Invalid login credentials")) {
+                    toast.error("Invalid username or password");
+                } else {
+                    toast.error("Unauthorized access");
+                }
             }
         }
         finally {
@@ -88,6 +90,14 @@ const LoginPage = () => {
                         errors={errors}
                     />
                 </div>
+
+                <p className=' text-sm mt-2 mb-3'>
+                    <Link className='font-semibold text-base hover:underline hover:text-blue-500'
+                        to="/forgot-password">
+                        <span className='text-btnColor'>Forgot Password?</span>
+                    </Link>
+                </p>
+
                 <button
                     disabled={loader}
                     type='submit'
@@ -97,7 +107,7 @@ const LoginPage = () => {
 
                 <p className='text-center text-sm text-slate-700 mt-6'>
                     Don't have an account?{" "}
-                    <Link className='font-semibold underline text-blue-500 hover:text-slate-700'
+                    <Link className='font-semibold hover:underline text-blue-500 hover:text-blue-500'
                         to="/register">
                         <span className='text-btnColor'>Sign Up</span>
                     </Link>
