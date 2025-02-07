@@ -106,7 +106,7 @@ const VerifyOtp = () => {
                         <input
                             key={index}
                             id={`otp-input-${index}`}
-                            type="text"
+                            type="tel"
                             value={value}
                             onChange={(e) => handleOtpChange(e, index)}
                             maxLength="1"
