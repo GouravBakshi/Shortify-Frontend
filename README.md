@@ -42,3 +42,4 @@ Make sure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.co
     npm run dev
 
 5. Enjoy using it.
+6. Live link :-  https://shfy.netlify.app/
