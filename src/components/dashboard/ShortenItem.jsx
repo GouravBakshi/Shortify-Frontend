@@ -242,7 +242,7 @@ const ShortenItem = ({ id, originalUrl, shortUrl, clickCount, createdDate, refet
                                 </h3>
                             </div>
                         )}
-                            <Graph graphData={analyticsData} />
+                            <Graph graphData={analyticsData} DATA_THRESHOLD={11} />
                         </>
 
                     )}

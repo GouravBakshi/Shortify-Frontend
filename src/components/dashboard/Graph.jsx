@@ -19,8 +19,7 @@ ChartJS.register(
   Filler
 );
 
-const Graph = ({ graphData }) => {
-  const DATA_THRESHOLD = 30;
+const Graph = ({ graphData, DATA_THRESHOLD }) => {
 
   // Function to format date into Month-Year (e.g., "Dec-2023")
   const formatDateToMonthYear = (date) => {

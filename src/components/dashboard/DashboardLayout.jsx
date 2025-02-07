@@ -57,7 +57,7 @@ const DashboardLayout = () => {
                                 </h3>
                             </div>
                         )}
-                        <Graph graphData={totalClicks && totalClicks.length > 0 ? totalClicks : []} />
+                        <Graph graphData={totalClicks && totalClicks.length > 0 ? totalClicks : []} DATA_THRESHOLD={12} />
                     </div>
                     <div className='py-5 sm:text-end text-center'>
                         <button className='bg-custom-gradient px-4 py-2 rounded-md text-white'
