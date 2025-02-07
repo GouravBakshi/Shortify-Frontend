@@ -115,7 +115,7 @@ const Graph = ({ graphData, DATA_THRESHOLD }) => {
         beginAtZero: true,
         title: {
           display: true,
-          text: labels.length > DATA_THRESHOLD ? "Month" : "Date",
+          text: graphData.length > DATA_THRESHOLD ? "Month" : "Date",
           font: {
             family: "Arial",
             size: 16,
